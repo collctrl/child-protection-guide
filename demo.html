@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="zh"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;通報建議 Demo&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body { font-family: sans-serif; padding: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#generateSpinner { margin-left: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hidden { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#summaryOutput {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 16px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 12px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #ccc;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #f9f9f9;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h2&gt;📝 通報建議 Demo&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;label for="caseInput"&gt;請輸入案例描述：&lt;/label&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;textarea id="caseInput" rows="4" cols="40" placeholder="例如：學生上課時突然哭泣，不願意回應老師..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;br&gt;&lt;br&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button id="generateButton"&gt;✨ 生成通報建議&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;span id="generateSpinner" class="hidden"&gt;⏳&lt;/span&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="summaryOutput" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;生成結果：&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p id="summaryText"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="ttsButton" class="hidden"&gt;🔊 朗讀&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const generateButton = document.getElementById('generateButton');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const generateSpinner = document.getElementById('generateSpinner');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const summaryOutput = document.getElementById('summaryOutput');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const summaryText = document.getElementById('summaryText');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const ttsButton = document.getElementById('ttsButton');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const caseInput = document.getElementById('caseInput');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>generateButton.addEventListener('click', async () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const userInput = caseInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>generateButton.textContent = "生成中...";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>generateSpinner.classList.remove('hidden');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// 模擬延遲</p>
+<p class="p1"><span class="Apple-converted-space">      </span>await new Promise(resolve =&gt; setTimeout(resolve, 1500));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// 假裝 AI 回覆</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const fakeResponses = [</p>
+<p class="p1"><span class="Apple-converted-space">          </span>"建議先協助學生釐清情緒來源，再引導表達需求。",</p>
+<p class="p1"><span class="Apple-converted-space">          </span>"可以運用深呼吸或短暫休息，幫助學生降低緊張感。",</p>
+<p class="p1"><span class="Apple-converted-space">          </span>"適時引介導師或同儕支持，避免學生感到孤立。",</p>
+<p class="p1"><span class="Apple-converted-space">          </span>"強化正向回饋，提升學生的自我效能感。"</p>
+<p class="p1"><span class="Apple-converted-space">      </span>];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let randomText = fakeResponses[Math.floor(Math.random() * fakeResponses.length)];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// 如果有輸入內容，就讓回覆稍微呼應</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (userInput) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>randomText = `針對「${userInput}」，${randomText}`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>summaryText.textContent = randomText;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>summaryOutput.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ttsButton.classList.remove('hidden');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// 還原按鈕</p>
+<p class="p1"><span class="Apple-converted-space">      </span>generateButton.textContent = "✨ 生成通報建議";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>generateSpinner.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 簡單的文字轉語音</p>
+<p class="p1"><span class="Apple-converted-space">  </span>ttsButton.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const utterance = new SpeechSynthesisUtterance(summaryText.textContent);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>utterance.lang = "zh-TW";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>speechSynthesis.speak(utterance);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
